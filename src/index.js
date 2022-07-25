@@ -1,7 +1,8 @@
-import { ApolloProvider, useQuery } from '@apollo/react-hooks';
-import ApolloClient, { gql } from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import env from './env';
 
 const client = new ApolloClient({
@@ -14,36 +15,6 @@ const client = new ApolloClient({
     })
   }
 });
-
-const ALL_USERS_QUERY = gql`
-  query {
-    allUsers {
-      email
-      name
-      role
-    }
-  }
-`;
-
-const App = () => {
-  const { loading, error, data } = useQuery(ALL_USERS_QUERY);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {JSON.stringify(error)}</p>;
-  }
-
-  return (
-    <pre>
-      <code>
-        {JSON.stringify(data, null, 2)}
-      </code>
-    </pre>
-  )
-}
 
 const Root = () => (
   <ApolloProvider client={client}>
