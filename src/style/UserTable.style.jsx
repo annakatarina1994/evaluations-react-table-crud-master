@@ -1,5 +1,5 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-const UserTable = styled.table`
-    
+export const Table = styled.table`
+  font-family: 'Segoe UI';
 `;

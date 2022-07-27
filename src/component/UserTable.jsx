@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Table } from '../style/UserTable.style';
 
 const UserTable = ({ userData }) => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const UserTable = ({ userData }) => {
     <>
       <h1>Users</h1>
       <button disabled>Delete</button>
-      <UserTable>
+      <Table>
         <tr>
           <th></th>
           <th>Email</th>
@@ -29,7 +30,7 @@ const UserTable = ({ userData }) => {
             </tr>
           );
         })}
-      </UserTable>
+      </Table>
     </>
   );
 };
