@@ -3,7 +3,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import UserTable from './component/UserTable';
 import UserDetails from './component/UserDetails';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Redirect } from 'react-router-dom';
+import './App.css';
 
 const ALL_USERS_QUERY = gql`
   query {
@@ -29,8 +30,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<UserTable userData={userData} />} />
-        <Route path="/userDetails" element={<UserDetails />} />
+        <Route path="/" element={<UserTable userData={userData} />}/>
+        <Route path="/:id" element={<UserDetails />} />
       </Routes>
     </BrowserRouter>
   );
