@@ -2,6 +2,8 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import UserTable from './component/UserTable';
+import UserDetails from './component/UserDetails';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const ALL_USERS_QUERY = gql`
   query {
@@ -25,11 +27,12 @@ const App = () => {
   }
 
   return (
-    <pre>
-        <h1>Users</h1>
-      {/* <code>{JSON.stringify(data, null, 2)}</code> */}
-      <UserTable userData={userData} />
-    </pre>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<UserTable userData={userData} />} />
+        <Route path="/userDetails" element={<UserDetails />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

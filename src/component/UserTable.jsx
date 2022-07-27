@@ -1,9 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UserTable = ({ userData }) => {
+  const navigate = useNavigate();
+
+  function handleRowClick() {
+    navigate('/userDetails');
+  }
+
   return (
-    <div>
-      <table>
+    <>
+      <h1>Users</h1>
+      <button disabled>Delete</button>
+      <UserTable>
         <tr>
           <th></th>
           <th>Email</th>
@@ -12,7 +21,7 @@ const UserTable = ({ userData }) => {
         </tr>
         {userData.allUsers.map((user, index) => {
           return (
-            <tr key={index}>
+            <tr key={index} onClick={handleRowClick}>
               <input type="checkbox" />
               <td>{user.email}</td>
               <td>{user.name}</td>
@@ -20,8 +29,8 @@ const UserTable = ({ userData }) => {
             </tr>
           );
         })}
-      </table>
-    </div>
+      </UserTable>
+    </>
   );
 };
 
