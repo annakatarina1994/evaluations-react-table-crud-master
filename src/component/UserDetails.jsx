@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const UserDetails = () => {
   const location = useLocation();
-  const { name, email, role} = location.state;
+  const { name, email, role } = location.state;
+  const [selected, setSelected] = useState(role);
+
+  function handleChange(event) {
+    setSelected(event.target.value);
+    console.log("Selected?: ", selected);
+  }
 
   return (
     <div>
@@ -12,20 +18,35 @@ const UserDetails = () => {
         <button>Save</button>
       </section>
       <section className="nameSection">
-        <label for="name">Name</label>
-        <input type="text" name="name" />
+        <label>Name</label>
+        <input type="text" name="name" placeholder={name} />
       </section>
       <section className="roleSection">
         <p>Role</p>
-        <input type="radio" />
+        <input type="radio" value="Admin" checked={selected === 'ADMIN'} onChange={handleChange} />
         <label>Admin</label>
-        <input type="radio" />
+        <input
+          type="radio"
+          value="Developer"
+          checked={selected === 'DEVELOPER'}
+          onChange={handleChange}
+        />
         <label>Developer</label>
-        <input type="radio" />
+        <input
+          type="radio"
+          value="App Manager"
+          checked={selected === 'APP_MANAGER'}
+          onChange={handleChange}
+        />
         <label>App Manager</label>
-        <input type="radio" />
+        <input
+          type="radio"
+          value="Marketing"
+          checked={selected === 'MARKETING'}
+          onChange={handleChange}
+        />
         <label>Marketing</label>
-        <input type="radio" />
+        <input type="radio" value="Sales" checked={selected === 'SALES'} onChange={handleChange} />
         <label>Sales</label>
       </section>
     </div>

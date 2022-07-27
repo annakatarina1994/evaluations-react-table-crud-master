@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../style/UserTable.css';
 
 const UserTable = ({ userData }) => {
-  const navigate = useNavigate();
-
-  function handleRowClick(user) {
-    navigate(`/user/${user.email}`);
-  }
 
   return (
     <>
@@ -22,20 +17,20 @@ const UserTable = ({ userData }) => {
             <th>Role</th>
           </tr>
         </thead>
-        {userData.allUsers.map((user, index) => {
-          return (
-            <tbody>
-              <tr key={index} className="tableRows">
-                <Link to={user.name} state={user} >
+        <tbody>
+          {userData.allUsers.map((user, index) => {
+            return (
+              <Link key={index} to={user.name} state={user}>
+                <tr key={index} className="tableRows">
                   <input type="checkbox" />
                   <td className="tableRows">{user.email}</td>
                   <td className="tableRows">{user.name}</td>
                   <td className="tableRows">{user.role}</td>
-                </Link>
-              </tr>
-            </tbody>
-          );
-        })}
+                </tr>
+              </Link>
+            );
+          })}
+        </tbody>
       </table>
     </>
   );
