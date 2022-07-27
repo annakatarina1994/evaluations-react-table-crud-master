@@ -1,3 +1,7 @@
+.userTable {
+    width: 50%;
+}
+
 .tableRows:hover {
     background-color: rgb(228, 227, 227);
     cursor: pointer;

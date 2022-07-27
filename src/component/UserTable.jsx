@@ -8,7 +8,7 @@ const UserTable = ({ userData }) => {
     <>
       <h1>Users</h1>
       <button disabled>Delete</button>
-      <table>
+      <table className='userTable'>
         <thead>
           <tr className="tableHeader">
             <th></th>

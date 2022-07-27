@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { gql } from 'apollo-boost';
+import { useMutation } from '@apollo/react-hooks';
+
+const UPDATE_USER = gql`
+    mutation updateUser {
+        email,
+        newAttributes
+    }
+  `;
 
 const UserDetails = () => {
   const location = useLocation();
   const { name, email, role } = location.state;
   const [selected, setSelected] = useState(role);
+  const [updateUser, {data, loading, error}] = useMutation(UPDATE_USE);
 
+  // not completed yet, revisit
   function handleChange(event) {
     setSelected(event.target.value);
     console.log("Selected?: ", selected);
