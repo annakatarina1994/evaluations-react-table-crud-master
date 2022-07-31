@@ -2,20 +2,21 @@
     width: 700px;
 }
 
-#email {
+#emailHeader {
     font-size: 30px;
 }
 
 .heading {
     display: flex;
     justify-content: space-between;
+    height: 70px;
     margin: 10px 0 10px 5px;
     padding-bottom: 10px;
     border-bottom: 1px solid #e5e5e5;
 }
 
 #saveButton {
-    margin-top: 20px;
+    margin-top: 40px;
     height: 25px;
     width: 70px;
     background-color: #0070c9;

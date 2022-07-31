@@ -1,18 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { gql } from 'apollo-boost';
+import { useMutation } from '@apollo/react-hooks';
 import '../style/UserTable.css';
 
 const DELETE_USER = gql`
   mutation deleteUsers($emails: [ID]!) {
-    deleteUsers(emails: $emails) {
-      ID
-    }
+    deleteUsers(emails: $emails)
   }
 `;
 
+const RESET_USERS = gql`
+  mutation resetUsers{
+    resetUsers
+  }
+`;
+
+// const DELETE_USER = gql`
+//   mutation {
+//     deleteUsers(emails: ) {
+//       emails
+//     }
+//   }
+// `;
+
 const UserTable = ({ userData }) => {
+  
   const [selectedUsers, setSelectedUsers] = useState([]);
+  const [deleteUsers, { data, loading, error }] = useMutation(DELETE_USER);
+  const [users, setUsers] = useState(userData);
+
+  // const [resetUsers, {data, loading, error}] = useMutation(RESET_USERS);
+
+  function removeUsers() {
+    deleteUsers({ variables: { emails: selectedUsers } });
+  }
+
+  // function resetTheUsers(){
+  //   resetUsers();
+  // }
 
   function capitalize(str) {
     str = str
@@ -25,21 +51,23 @@ const UserTable = ({ userData }) => {
 
   function handleChange(e) {
     if (e.target.checked === true) {
-      setSelectedUsers([...selectedUsers, Number(e.target.value)]);
+      console.log('e.target.value: ', e.target.value);
+      setSelectedUsers([...selectedUsers, e.target.value]);
     } else {
       const activeUsers = selectedUsers.filter((x) => {
-        if (x === Number(e.target.value)) return false;
+        if (x === e.target.value) return false;
         return true;
       });
       setSelectedUsers([...activeUsers]);
     }
+    console.log('Selected Users: ', selectedUsers);
   }
 
   return (
     <>
       <section className="tableHeadingSection">
         <h1 className="tableTitle">Users</h1>
-        <button disabled className="deleteButton">
+        <button onClick={removeUsers} className="deleteButton">
           Delete
         </button>
       </section>
@@ -52,8 +80,8 @@ const UserTable = ({ userData }) => {
       {userData.allUsers.map((user, index) => {
         return (
           <div className="userRows">
+            <input id="checkBox" type="checkbox" onChange={handleChange} value={user.email} />
             <Link key={index} to={user.name} state={user} className="userRowLink">
-              <input id="checkBox" type="checkbox" onChange={handleChange} value={user.email} />
               <p id="email">{user.email}</p>
               <p id="name">{user.name}</p>
               <p id="role">{capitalize(user.role)}</p>

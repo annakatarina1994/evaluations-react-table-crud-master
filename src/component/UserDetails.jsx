@@ -19,7 +19,7 @@ const UserDetails = () => {
   const location = useLocation();
   const { name, email, role } = location.state;
   const [selected, setSelected] = useState(role);
-  const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER, {});
+  const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER);
   let input;
 
   if (loading) return 'Loading...';
@@ -40,7 +40,7 @@ const UserDetails = () => {
         }}
       >
         <section className='heading'>
-          <h1 id="email">{email}</h1>
+          <h1 id="emailHeader">{email}</h1>
           {/* add an onsubmit to this button, where i think we'd want to call our mutation? maybe? */}
           <button type="submit" id="saveButton">Save</button>
         </section>
