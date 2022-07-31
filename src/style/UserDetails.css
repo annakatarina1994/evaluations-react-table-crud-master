@@ -1,0 +1,25 @@
+.userDetailsForm {
+    width: 700px;
+}
+
+#email {
+    font-size: 30px;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 5px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#saveButton {
+    margin-top: 20px;
+    height: 25px;
+    width: 70px;
+    background-color: #0070c9;
+    border: 1px solid #0070c9;
+    border-radius: 4px;
+    color: white;
+}

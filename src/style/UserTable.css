@@ -1,13 +1,108 @@
-.userTable {
-    width: 50%;
+.tableHeadingSection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    width: 700px;
+    height: 80px;
 }
 
-.tableRows:hover {
+.tableTitle {
+    font-size: 35px;
+}
+
+.deleteButton{
+    display: block;
+    align-self: flex-end;
+    width: 76px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    background-color: white;
+    height: 2em;
+}
+
+.deleteButton:hover {
+   background-color: rgba(255, 0, 0, 0.123);
+}
+
+.deleteButton:disabled {
+    color:#e5e5e5;
+    border: 1px solid #e5e5e5;
+    pointer-events: none;
+}
+
+.tableHeadersSection {
+    width: 700px;
+    font-variant: small-caps;
+    font-size: 16px;
+    color: rgb(131, 131, 131);
+    border-bottom: 1.5px solid #e5e5e5;
+    border-top: 1.5px solid #e5e5e5;
+}
+
+#checkBoxColumn {
+    display: inline-block;
+    width: 20px;
+    margin: 5px;
+}
+
+#checkBox {
+    display: inline-block;
+    width: 20px;
+    margin: 5px;
+}
+
+#emailColumn {
+    display: inline-block;
+    width: 300px;
+    margin: 5px;
+}
+
+#email {
+    display: inline-block;
+    width: 300px;
+    margin: 5px;
+}
+
+#nameColumn {
+    display: inline-block;
+    width: 225px;
+    margin: 5px;
+}
+
+#name {
+    display: inline-block;
+    width: 225px;
+    margin: 5px;
+}
+
+#roleColumn {
+    display: inline-block;
+    width: 100px;
+    margin: 5px;
+}
+
+#role {
+    display: inline-block;
+    width: 100px;
+    margin: 5px;
+}
+
+.userRows:hover {
     background-color: rgb(228, 227, 227);
     cursor: pointer;
-    border-collapse: collapse;
 }
 
-.tableRows {
-    border-collapse: collapse;
+.userRows {
+    width: 700px;
+    height: 35px;
+    line-height: 25px;
+    border-bottom: 1px solid #e5e5e5;
+    color: black;
+}
+
+.userRowLink {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
 }
