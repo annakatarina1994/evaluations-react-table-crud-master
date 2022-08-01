@@ -6,7 +6,7 @@ import UserDetails from './component/UserDetails';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-const ALL_USERS_QUERY = gql`
+export const ALL_USERS_QUERY = gql`
   query {
     allUsers {
       email
@@ -26,6 +26,8 @@ const App = () => {
   if (error) {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
+
+  console.log("App Data: ", userData);
 
   return (
     <BrowserRouter>

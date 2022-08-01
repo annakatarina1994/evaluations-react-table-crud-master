@@ -79,9 +79,9 @@ const UserTable = ({ userData }) => {
       </section>
       {userData.allUsers.map((user, index) => {
         return (
-          <div className="userRows">
+          <div key={index} className="userRows">
             <input id="checkBox" type="checkbox" onChange={handleChange} value={user.email} />
-            <Link key={index} to={user.name} state={user} className="userRowLink">
+            <Link to={user.name} state={user} className="userRowLink">
               <p id="email">{user.email}</p>
               <p id="name">{user.name}</p>
               <p id="role">{capitalize(user.role)}</p>
