@@ -1,5 +1,6 @@
 .userDetailsForm {
     width: 700px;
+    margin: 10px;
 }
 
 #emailHeader {
@@ -18,9 +19,49 @@
 #saveButton {
     margin-top: 40px;
     height: 25px;
+    padding-bottom: 3px;
     width: 70px;
     background-color: #0070c9;
     border: 1px solid #0070c9;
     border-radius: 4px;
     color: white;
+}
+
+#saveButton:hover {
+    background-color: #4d8ec4;
+    border-color: #4d8ec4;
+}
+
+.editSection {
+    display: flex;
+}
+
+.nameSection {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.roleSection {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 10px;
+    width: 350px;
+    border-left: 1px solid #e5e5e5;
+}
+
+.role {
+    margin: 5px;
+}
+
+.roleRadioButtons {
+    margin-bottom: 8px;
+}
+
+.nameInput {
+    width: 250px;
+    margin-top: 5px;
+    border: 3px solid rgba(59, 153, 252, 0.5);
+    border-radius: 4px;
 }

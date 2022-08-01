@@ -1,3 +1,7 @@
+.userTable {
+    margin: 10px;
+}
+
 .tableHeadingSection {
     display: flex;
     justify-content: space-between;

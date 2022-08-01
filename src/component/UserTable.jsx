@@ -64,7 +64,7 @@ const UserTable = ({ userData }) => {
   }
 
   return (
-    <>
+    <div className='userTable'>
       <section className="tableHeadingSection">
         <h1 className="tableTitle">Users</h1>
         <button onClick={removeUsers} className="deleteButton">
@@ -89,7 +89,7 @@ const UserTable = ({ userData }) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 
