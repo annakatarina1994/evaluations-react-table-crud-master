@@ -3,7 +3,7 @@ import ApolloClient from 'apollo-boost';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import env from './env';
+import env from './env.js';
 
 const client = new ApolloClient({
   uri: env.GRAPHQL_ENDPOINT,
