@@ -8,7 +8,9 @@ import '../style/UserDetails.css';
 const UPDATE_USER = gql`
   mutation updateUser($email: ID!, $newAttributes: UserAttributesInput!) {
     updateUser(email: $email, newAttributes: $newAttributes) {
+      email
       name
+      role
     }
   }
 `;
@@ -17,17 +19,24 @@ const UserDetails = () => {
   const location = useLocation();
   const { name, email, role } = location.state;
   const [selected, setSelected] = useState(role);
-  const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER);
+  const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER, {
+    variables: {
+      email: email,
+
+    }
+  });
   const navigate = useNavigate();
 
   if (loading) return 'Loading...';
   if (error) return `Error Saving! ${error.message}`;
 
-  let roleInput;
-
   function handleChange(event) {
     setSelected(event.target.value);
     roleInput = event.target.value;
+  }
+
+  if(nameInput.value === ''){
+    return name;
   }
 
   function updateCurrentUser(e) {
@@ -41,10 +50,11 @@ const UserDetails = () => {
         newAttributes: { name: nameInput.value, role: roleInput.value },
       },
     });
-    nameInput.value = '';
     roleInput.value = '';
+    nameInput.value = '';
   }
 
+  let roleInput;
   let nameInput;
 
   return (
