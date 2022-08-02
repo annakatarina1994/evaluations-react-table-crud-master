@@ -27,8 +27,6 @@ const App = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
-  console.log("App Data: ", userData);
-
   return (
     <BrowserRouter>
       <Routes>

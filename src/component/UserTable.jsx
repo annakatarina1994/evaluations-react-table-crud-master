@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
@@ -10,25 +10,16 @@ const DELETE_USER = gql`
   }
 `;
 
-const RESET_USERS = gql`
-  mutation resetUsers{
-    resetUsers
-  }
-`;
-
-// const DELETE_USER = gql`
-//   mutation {
-//     deleteUsers(emails: ) {
-//       emails
-//     }
+// const RESET_USERS = gql`
+//   mutation resetUsers{
+//     resetUsers
 //   }
 // `;
 
 const UserTable = ({ userData }) => {
   
   const [selectedUsers, setSelectedUsers] = useState([]);
-  const [deleteUsers, { data, loading, error }] = useMutation(DELETE_USER);
-  const [users, setUsers] = useState(userData);
+  const [deleteUsers] = useMutation(DELETE_USER);
 
   // const [resetUsers, {data, loading, error}] = useMutation(RESET_USERS);
 
@@ -51,7 +42,6 @@ const UserTable = ({ userData }) => {
 
   function handleChange(e) {
     if (e.target.checked === true) {
-      console.log('e.target.value: ', e.target.value);
       setSelectedUsers([...selectedUsers, e.target.value]);
     } else {
       const activeUsers = selectedUsers.filter((x) => {
@@ -60,7 +50,6 @@ const UserTable = ({ userData }) => {
       });
       setSelectedUsers([...activeUsers]);
     }
-    console.log('Selected Users: ', selectedUsers);
   }
 
   return (
