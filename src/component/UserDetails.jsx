@@ -18,7 +18,7 @@ const UserDetails = () => {
   const location = useLocation();
   const { name, email, role } = location.state;
   const [selected, setSelected] = useState(role);
-  const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER, {
+  const [updateUser, { loading, error }] = useMutation(UPDATE_USER, {
     variables: {
       email: email,
     },

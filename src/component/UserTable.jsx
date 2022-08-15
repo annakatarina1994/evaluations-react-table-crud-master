@@ -10,6 +10,7 @@ const DELETE_USER = gql`
   }
 `;
 
+// Leaving reset users mutation for when I need to reset users
 // const RESET_USERS = gql`
 //   mutation resetUsers{
 //     resetUsers
